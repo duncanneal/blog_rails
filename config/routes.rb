@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :add_references
-  resources :references
-  get 'comments/index'
+  
+  resources :posts do
+  resources :comments, :only => [:create]
+  end
+  #get 'comments/index'
 
-  get 'posts/index'
+  #get 'posts/index'
 
  
   
