@@ -4,9 +4,9 @@ class CreateComments < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.string :author
-      t.datetime :date 
+      t.datetime :date
+       
       t.timestamps null: false
-      t.references :post
     end
   end
 end

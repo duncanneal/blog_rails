@@ -28,7 +28,7 @@ private
 
    # Never trust parameters from the scary internet, only allow the white list through.
  def comment_params
-   params.require(:comment).permit(:title, :body)
+   params.require(:comment).permit(:title, :body, :post_id, :date, :author)
  end
 
 end

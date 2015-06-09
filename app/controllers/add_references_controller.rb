@@ -1,0 +1,2 @@
+class AddReferencesController < ApplicationController
+end
