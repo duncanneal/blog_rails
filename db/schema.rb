@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609011233) do
+ActiveRecord::Schema.define(version: 20150609175934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.string   "title"
+    t.string   "author_name"
+    t.string   "author_email"
+    t.date     "date"
     t.text     "body"
-    t.string   "author"
-    t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "post_id_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "post_id"
   end
 
@@ -30,11 +32,19 @@ ActiveRecord::Schema.define(version: 20150609011233) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
-    t.text     "body"
     t.string   "author"
     t.datetime "date"
+    t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_foreign_key "comments", "posts"

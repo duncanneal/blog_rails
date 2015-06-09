@@ -3,8 +3,10 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.string :title
       t.string :author_name
+      t.string :author_email
+      t.date :date
       t.text :body
-      t.datetime :date
+      t.references :post_id
        
       t.timestamps null: false
     end

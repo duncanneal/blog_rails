@@ -1,4 +1,4 @@
-<h1>Home#index</h1>
+<h1>Welcome to my Blog.</h1>
 
 <% @posts.each do |post| %>
 <table>
@@ -15,3 +15,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link_to 'Posts', posts_path %>
