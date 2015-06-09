@@ -1,5 +1,7 @@
-<h1>Posts Index Page</h1>
-
+<title>
+<h1>Read some posts</h1>
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <table>
     <thead>
     <tr>
@@ -11,6 +13,7 @@
     </tr>
     </thead>
 
+<table>
     <tbody>
     <% @posts.each do |post| %>
         <tr>
@@ -25,6 +28,7 @@
     <% end %>
     </tbody>
   </table>
+
   
-  <%= link_to 'Home', root_path %> |
-  <%= link_to 'New Post', new_post_path %>
+<%= link_to 'Home', root_path, class: "button secondary small" %> 
+<%= link_to 'New Post', new_post_path, class: "button secondary small" %>
