@@ -1,12 +1,10 @@
   class PostsController < ApplicationController
-    before_action :set_post, only: [:edit, :update, :destroy]
-
     before_action :require_authenticated_user, :except => [:index, :show]
 
     def index
       if params[:mine]
        @posts = current_user.try(:posts)
-     end
+      end
       @posts = Post.all.order('created_at DESC') #current.rakeduser
     end
 

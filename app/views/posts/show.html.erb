@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<div class="row">
+    <div class="large-12 column">
 <p>
   <strong>Author:</strong>
   <%= @post.author %>
@@ -15,30 +16,9 @@
   <%= @post.body %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post), class: "button secondary small"  %> 
-<%= link_to 'Back', posts_path, class: "button secondary small" %>
-
-<h4>Leave a comment</h4>
-<%= form_for [@post, @post.comments.build] do |f| %>
-    <div class="field">
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </div>
-    <div class="field">
-      <%= f.label :author_name %>
-      <%= f.text_field :author_name %>
-    </div>
-    <div class="field">
-      <%= f.label :author_email %>
-      <%= f.text_field :author_email %>
-    </div>
-    <div class="field">
-      <%= f.label :body %><br>
-      <%= f.text_area :body %>
-    </div>
-    <p><%= f.submit "Add comment", class: "button secondary small" %></p>
-<% end %>
-
+<%= link_to 'Edit', edit_post_path, class: "button round secondary small"  %> 
+<%= link_to 'Back', posts_path, class: "button round secondary small" %>
+<h4>Comment</h4>
 <div class="container">
   <% @post.comments.each do |comment| %>
       <%= comment.author_name %>
@@ -46,3 +26,10 @@
       <%= comment.body %>
   <% end %>
 </div>
+
+
+<footer>
+    <div class="container">
+       <p>&copy; a D2 joint 2015</p>
+    </div>
+</footer>

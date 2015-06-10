@@ -6,22 +6,41 @@
 <section class="top-bar-section">
     <ul class="left">
       <li class="has-dropdown">
-       <a href="#"></i>Dig in!</a>
+       <a href="#"></i>Drink up!</a>
         <ul class="dropdown">
-          <li><a href="/posts/new">New Posts</a></li>
+          <li><a><%= link_to "Posts", posts_path %></a></li>
           <li><a href="/comments">Comments</a></li>
         </ul>
       </li>
       </ul>
       <!-- Right Nav Section -->
     <ul class="right">
-      <li><a>Sign In</a></li>
+      <li><a>Sign in:</a></li>
+    <div class="large-5 columns">
+      <div class="row collapse postfix-round">
+        <div class="small-10 columns">
+          <input type="text" placeholder="Email">
+        </div>
+      </div>
+   </div>
+   <div class="large-5 columns">
+      <div class="row collapse postfix-round">
+        <div class="small-8 columns">
+          <input type="text" placeholder="Password">
+        </div>
+        <div class="small-4 columns">
+          <a href="#" class="button postfix">GO</a>
+        </div>
+      </div>
+   </div>
     </ul>
+  </ul>
   </section>
   </nav>
 <header>Cup o Duncan</header>
 
-
+<div class="row">
+    <div class="large-12 column">
 <% @posts.each do |post| %>
 <table>
   <thead>
@@ -31,19 +50,17 @@
     </tr>
   </thead>
   <tbody>
-      <td><%= post.title %></td>
+      <td><%= link_to post.title, blog_path(post) %></td>
       <td><%= post.body %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-
-
-<%= link_to 'Posts', posts_path %>
-
+</div>
+</div>
 <footer>
-    <div class="wrap">
+    <div class="container">
        <p>&copy; a D2 joint 2015</p>
     </div>
-  </footer>
+</footer>
 

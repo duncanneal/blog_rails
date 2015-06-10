@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="large-12 column">
+<%= @post.title %>
+<h4>Leave a comment</h4>
+<%= form_for [@post, @post.comments.build] do |f| %>
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :author_name %>
+      <%= f.text_field :author_name %>
+    </div>
+    <div class="field">
+      <%= f.label :author_email %>
+      <%= f.text_field :author_email %>
+    </div>
+    <div class="field">
+      <%= f.label :body %><br>
+      <%= f.text_area :body %>
+    </div>
+    <p><%= f.submit "Add comment", class: "button secondary small" %></p>
+<% end %>
+<div class="container">
+  <% @post.comments.each do |comment| %>
+      <%= comment.author_name %>
+      <%= comment.author_email %>
+      <%= comment.body %>
+  <% end %>
+</div>
+</div>
