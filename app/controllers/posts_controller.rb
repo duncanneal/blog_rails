@@ -1,57 +1,55 @@
-class PostsController < ApplicationController
+  class PostsController < ApplicationController
+    before_action :set_post, only: [:edit, :update, :destroy]
 
- def index
-   @posts = Post.all.order('created_at DESC') #current.rakeduser
- end
+    before_action :require_authenticated_user, :except => [:index, :show]
 
- def new
-   @post = Post.new
- end
+    def index
+      if params[:mine]
+       @posts = current_user.try(:posts)
+     end
+      @posts = Post.all.order('created_at DESC') #current.rakeduser
+    end
 
- def show
-   @post = Post.find(params[:id])
-   @comment = @post.comments.build
- end
-
- def create
-   @post = Post.new(post_params)
-
-   if @post.save
-     redirect_to @post
-   else
-     render 'new'
+   def new
+     @post = Post.new
+     @post = current_user.posts.new
    end
- end
 
- def edit
-   @post = Post.find(params[:id])
- end
+   def show
+     @post = Post.find(params[:id])
+     @comment = @post.comments.build
+   end
 
- def update
-   @post = Post.find(params[:id])
+   def create
+     @post = Post.new(post_params)
 
-   respond_to do |format|
+     if @post.save
+       redirect_to @post
+     else
+       render 'new'
+     end
+   end
+
+   def edit
+     @post = Post.find(params[:id])
+   end
+
+   def update
     if @post.update(post_params)
-      format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+      redirect_to @post, notice: 'Post was successfully updated.'
     else
-      format.html { render :edit }
+      render :edit
     end
   end
-end
 
-def destroy
-  @post = Post.find(params[:id])
-
-  @post.destroy
-  respond_to do |format|
-    format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-    format.json { head :no_content }
+  def destroy
+    @post.destroy
+    redirect_to posts_url, notice: 'Post was successfully destroyed.'
   end
-end
 
-private
+  private
 
-def post_params
- params.require(:post).permit(:title, :date, :author, :body)
-end
+  def post_params
+    params.require(:post).permit(:user_id, :title, :date, :author, :body)
+  end
 end

@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-def create
+  def create
     email, password = params.values_at(:email, :password)
     user = User.find_by(email: email).try(:authenticate, password)
 
@@ -17,6 +17,5 @@ def create
     session[:user_id] = nil
     flash[:notice] = "Logged out."
     redirect_to root_path
-  end
+  end  
 end
-

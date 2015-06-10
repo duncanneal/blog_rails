@@ -17,4 +17,24 @@
  */ 
 
  /*= require foundation */
+ @import "foundation/components/top-bar";
  @import "foundation_and_overrides";
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+strong { font-family: "Courier new", Sans-Serif;
+}
+
+table { font-family: "Andale mono", Sans-Serif;
+}
+
+h4 { font-family: "Andale mono", Sans-Serif;
+}
+
+div { font-family: "Courier new", Sans-Serif;
+      font-style: bold;
+}
+
+
+
+

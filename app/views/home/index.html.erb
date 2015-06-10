@@ -1,4 +1,26 @@
-<h1>Welcome to my Blog.</h1>
+<nav class="top-bar" data-topbar role="navigation" data-options="is_hover: false" data-options="dropdown_autoclose: false">
+
+  <ul class="title-area">
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+<section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="left">
+      <li class="has-dropdown">
+       <a href="#"></i>Dig in!</a>
+        <ul class="dropdown">
+          <li><a href="/posts/new">New Posts</a></li>
+          <li><a href="/comments">Comments</a></li>
+        </ul>
+      </li>
+      <!-- Right Nav Section -->
+    <ul class="right">
+      <li>Sign In</a></li>
+    </ul>
+  </section>
+  </nav>
+<header>Cup o Duncan</header>
+
 
 <% @posts.each do |post| %>
 <table>
@@ -16,4 +38,12 @@
   </tbody>
 </table>
 
-<%= link_to 'Posts', posts_path, class: "button secondary small" %>
+
+<%= link_to 'Posts', posts_path %>
+
+<footer>
+    <div class="wrap">
+       <p>&copy; a D2 joint 2015</p>
+    </div>
+  </footer>
+
