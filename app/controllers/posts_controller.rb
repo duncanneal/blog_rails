@@ -19,7 +19,7 @@
    end
 
    def create
-     @post = Post.new(post_params)
+     @post = current_user.posts.new(post_params)
 
      if @post.save
        redirect_to @post
@@ -48,6 +48,6 @@
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :date, :author, :body)
+    params.require(:post).permit(:user_id, :title, :date, :author, :body, :all_tags)
   end
 end
