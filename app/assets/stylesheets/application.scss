@@ -10,17 +10,11 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
- 
-
+ *= require_tree .
  */ 
 
- /*= require foundation */
- @import "foundation/components/top-bar";
-
- @import "font-awesome-sprockets";
-
+@import "foundation_and_overrides";
 
 strong { font-family: "Courier new", Sans-Serif;
 }
@@ -34,9 +28,3 @@ div { font-family: "Courier new", Sans-Serif;
 
 h2, h4 { font-family: "Andale mono", Sans-Serif;
 }
-
-
-
-
-
-
