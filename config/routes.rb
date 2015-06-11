@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   
-  resources :posts do
+  resources :posts, :only => [:create] 
   resources :comments, :only => [:create, :edit, :destroy]
-  end
+  resource :session, :only => [:create, :destroy]
+  
   #get 'comments/index'
 
-  #get 'posts/index'
-  resource :session, :only => [:create, :destroy]
- 
-  
+  get 'posts/index'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
