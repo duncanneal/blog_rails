@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   #get 'comments/index'
 
   #get 'posts/index'
-
+  resource :session, :only => [:create, :destroy]
  
   
   # The priority is based upon order of creation: first created -> highest priority.
