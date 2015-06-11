@@ -17,4 +17,4 @@ end
   def all_tags
     self.tags.map(&:name).join(", ")
   end
-end
+  
