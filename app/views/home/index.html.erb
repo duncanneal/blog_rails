@@ -1,19 +1,26 @@
-<h1>Welcome to my Blog.</h1>
 
-<% @posts.each do |post| %>
-<table>
-  <thead>
-    <tr>
-      <th>Post Title</th>
-      <th>Post</th>
-    </tr>
-  </thead>
-  <tbody>
-      <td><%= post.title %></td>
-      <td><%= post.body %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="large-12 column">
+    <% @posts.each do |post| %>
+    <table>
+      <thead>
+        <tr>
+          <th>Post Title</th>
+          <th>Post</th>
+        </tr>
+      </thead>
+      <tbody>
+        <td><%= link_to post.title, blog_path(post) %></td>
+        <td><%= post.body %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+<footer>
+  <div class="container">
+   <p>&copy; a D2 joint 2015</p>
+ </div>
+</footer>
 
-<%= link_to 'Posts', posts_path, class: "button secondary small" %>

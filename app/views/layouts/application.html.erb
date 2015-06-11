@@ -1,20 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+<header>
+Cup o Duncan  
+</header>
+<nav class="top-bar" data-topbar role="navigation" data-options="is_hover: true" data-options="dropdown_autoclose: true">
+
+<ul class="title-area">
+<section class="top-bar-section">
+    <ul class="left">
+      <li class="has-dropdown">
+         <a href="#"></i>Drink!</a>
+         <ul class="dropdown">
+            <li><a><%= link_to "Home", root_path %></a></li>
+            <li><a><%= link_to "Posts", posts_path %></a></li>
+            <li><a href="#"></i>""</a></li>
+        </ul>
+    </li>
+</ul>
+    <body>
+<div class="row">
+  <% unless current_user %>
+  <form action="<%= session_path %>" method="POST" class="navbar-form navbar-right">
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+    
+      <div class="large-6 columns">
+        <div class="row collapse prefix-round">
+          <div class="small-3 columns">
+          </div>
+          <div class="small-9 columns">
+            <input type="email" name="email" placeholder="Email" >
+          </div>
+        </div>
+      </div>
+      <div class="large-4 columns">
+        <div class="row collapse postfix-round">
+          <div class="small-9 columns">
+            <input type="password" name="password" placeholder="Password" >
+          </div>
+          <div class="small-3 columns">
+            <button type="submit" class="button postfix">Go!</a>
+            </div>
+          </div>
+        </div>
+      </form>
+      <% else %>
+      <form action="<%= session_path %>" method="POST" class="navbar-form navbar-right">
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+        <input name="_method" type="hidden" value="delete" />
+        <button type="submit" class="button round tiny">Log Out as <%= current_user.name %></button>
+      </form>
+    </div>
+    <% end %>
+</div>
+
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
-
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-  </head>
+</head>
+<%= yield %>
 
-  <body>
 
-    <%= yield %>
 
-  </body>
-</html>
+
+
