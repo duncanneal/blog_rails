@@ -4,7 +4,7 @@
 
 <h2>Leave a comment</h2>
 <table>
-<%= form_for [@post, @post.comments.build] do |f| %>
+<%= form_for [ @post.comments.build] do |f| %>
     <div class="field">
      <%= f.label :title %>
      <%= f.text_field :title %><br>
