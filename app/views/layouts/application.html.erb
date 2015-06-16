@@ -55,10 +55,12 @@ Cup o Duncan
       </form>
       <% else %>
       <form action="<%= session_path %>" method="POST" class="navbar-form navbar-right">
+      <ul><%= link_to image_tag(current_user.avatar.url, :size => '32x32', :class => 'img-thumbnail navbar-right avatar'), edit_registration_path(:user)  %></ul>
         <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-        <input name="_method" type="hidden" value="delete" />
-        <button type="submit" class="button round tiny">Log Out as <%= current_user.name %></button>
+       <ul> <input name="_method" type="hidden" value="delete" />
+        <button type="submit" class="button round tiny">Log Out as <%= current_user.name %></button></ul>
       </form>
+      
     </div>
     <% end %>
 </div>

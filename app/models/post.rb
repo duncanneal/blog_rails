@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
   has_many :comments, dependent: :destroy
   has_many :taggings
   has_many :tags, :through => :taggings

@@ -15,7 +15,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
 gem 'fog'
 gem 'devise'
-
+gem 'mandrill-api'
+gem 'puma'
 
 group :development, :test do
   gem 'byebug'
