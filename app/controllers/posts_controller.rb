@@ -5,7 +5,7 @@
       if params[:mine]
        @posts = current_user.try(:posts)
      end
-      @posts = Post.all.order('created_at DESC') #current.rakeduser
+       @posts = Post.all.order('created_at DESC') #current.rakeduser
     end
 
     def new
@@ -48,6 +48,6 @@
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :date, :author, :body, :all_tags)
+    params.require(:post).permit(:user_id, :title, :date, :author, :pic, :body, :all_tags)
   end
 end

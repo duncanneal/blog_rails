@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
-
-  has_secure_password 
+ 
   has_many :posts
 
   # Include default devise modules. Others available are:

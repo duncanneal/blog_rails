@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     :registrations => "registrations"
       }
 
-  resources :posts, :only => [:create] 
+  resources :posts, :only => [:create, :show] 
   resources :comments, :only => [:create, :edit, :destroy]
   resource :session, :only => [:create, :destroy]
   
