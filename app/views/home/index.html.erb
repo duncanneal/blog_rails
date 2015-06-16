@@ -10,6 +10,7 @@
         </tr>
       </thead>
       <tbody>
+      <td><%= link_to image_tag(post.avatar.url, :size => '32x32', :class => 'img-thumbnail') %></td>
         <td><%= link_to post.title, blog_path(post) %></td>
         <td><%= post.body %></td>
       </tr>

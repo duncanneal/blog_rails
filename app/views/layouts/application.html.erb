@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <meta name="description" content="cup o Duncan">
+    <meta name="author" content="Duncan Neal">
+    <title><%= content_for?(:title) ? yield(:title) : "cup o Duncan" %></title>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -13,64 +15,47 @@
 <header>
 Cup o Duncan  
 </header>
-<nav class="top-bar" data-topbar role="navigation" data-options="is_hover: true" data-options="dropdown_autoclose: true">
-
+<nav class="top-bar" data-topbar role="navigation" data-options="is_hover: true" 
 <ul class="title-area">
 <section class="top-bar-section">
     <ul class="left">
-      <li class="has-dropdown">
-         <a href="#"></i>Drink!</a>
-         <ul class="dropdown">
             <li><a><%= link_to "Home", root_path %></a></li>
             <li><a><%= link_to "Posts", posts_path %></a></li>
-            <li><a href="#"></i>""</a></li>
-        </ul>
-    </li>
-</ul>
+            <li><a><%= link_to "Comments", comments_path %></a></li>   
+    </ul>
     <body>
 <div class="row">
   <% unless current_user %>
-  <form action="<%= session_path %>" method="POST" class="navbar-form navbar-right">
+  <form action="<%= session_path %>" method="POST">
     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-    
-      <div class="large-6 columns">
-        <div class="row collapse prefix-round">
-          <div class="small-3 columns">
-          </div>
+  
+      <div class="large-4 columns">
+      
+
           <div class="small-9 columns">
             <input type="email" name="email" placeholder="Email" >
           </div>
-        </div>
-      </div>
-      <div class="large-4 columns">
-        <div class="row collapse postfix-round">
+  
+
           <div class="small-9 columns">
             <input type="password" name="password" placeholder="Password" >
           </div>
-          <div class="small-3 columns">
-            <button type="submit" class="button postfix">Go!</a>
+
+          <div class="small-2 columns">
+            <button type="submit" class="button">Drink!</a></button>
             </div>
-          </div>
-        </div>
+       </div>
+
       </form>
       <% else %>
-      <form action="<%= session_path %>" method="POST" class="navbar-form navbar-right">
-      <ul><%= link_to image_tag(current_user.avatar.url, :size => '32x32', :class => 'img-thumbnail navbar-right avatar'), edit_registration_path(:user)  %></ul>
+      <form action="<%= session_path %>" method="POST">
         <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-       <ul> <input name="_method" type="hidden" value="delete" />
-        <button type="submit" class="button round tiny">Log Out as <%= current_user.name %></button></ul>
+        <input name="_method" type="hidden" value="delete" />
+        <button type="submit" class="button round tiny">Log Out as <%= current_user.name %></button>
       </form>
-      
     </div>
     <% end %>
 </div>
-
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
 
 <%= yield %>
 

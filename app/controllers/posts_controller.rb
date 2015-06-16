@@ -4,11 +4,11 @@
     def index
       if params[:mine]
        @posts = current_user.try(:posts)
-      end
+     end
       @posts = Post.all.order('created_at DESC') #current.rakeduser
     end
 
-   def new
+    def new
      @post = Post.new
      @post = current_user.posts.new
    end
