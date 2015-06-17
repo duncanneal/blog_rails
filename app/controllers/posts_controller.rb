@@ -1,5 +1,5 @@
   class PostsController < ApplicationController
-    before_action :require_authenticated_user, :except => [:index, :show]
+    #before_action :require_authenticated_user, :except => [:index, :show]
     before_action :set_post, :only => [:show, :edit, :update, :destroy]
     
     def index
@@ -12,11 +12,12 @@
    end
 
    def show
+     @posts = Post.all
      @comment = Comment.new
    end
 
    def create
-     @post = current_user.posts.new(post_params)
+     @post = Post.create(post_params)
 
      if @post.save
        redirect_to @post
