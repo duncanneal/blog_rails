@@ -1,21 +1,18 @@
   class PostsController < ApplicationController
     before_action :require_authenticated_user, :except => [:index, :show]
-
+    before_action :set_post, :only => [:show, :edit, :update, :destroy]
+    
     def index
-      if params[:mine]
-       @posts = current_user.try(:posts)
-     end
-       @posts = Post.all.order('created_at DESC') #current.rakeduser
-    end
+     @posts = Post.all.order('created_at DESC').first(3)
+   end
 
-    def new
+   def new
      @post = Post.new
      @post = current_user.posts.new
    end
 
    def show
-     @post = Post.find(params[:id])
-     @comment = @post.comments.build
+     @comment = Comment.new
    end
 
    def create
@@ -29,7 +26,6 @@
    end
 
    def edit
-     @post = Post.find(params[:id])
    end
 
    def update
@@ -46,8 +42,11 @@
   end
 
   private
-
+  def set_post
+    @post = Post.find(params[:id])
+  end
+  
   def post_params
-    params.require(:post).permit(:user_id, :title, :date, :author, :pic, :body, :all_tags)
+    params.require(:post).permit(:title, :body, :all_tags, :pic)
   end
 end

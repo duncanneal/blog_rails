@@ -2,7 +2,7 @@
     def create
       email, password = params.values_at(:email, :password)
       user = User.find_by(email: email).try(:authenticate, password)
-
+      #user = User.authorize_with(request.env["omniauth.auth"])
       if user
         session[:user_id] = user.id
         flash[:notice] = "#{user.name} logged in."

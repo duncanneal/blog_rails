@@ -6,7 +6,7 @@
     </h1>
 
     <p class="date">
-      Submitted <%= time_ago_in_words(@post.created_at) %> Ago        
+    Submitted <%= time_ago_in_words(@post.created_at) %> ago        
     </p>
 
     <p class="body">
@@ -21,29 +21,26 @@
       <%= image_tag(@post.pic.url) %>
     </p>
 
-    <%= link_to 'Edit', edit_post_path(post), class: "button round secondary small"  %> 
-    
+    <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_post_path, class: "button round secondary small"  %> 
+    <% end %>
+
     <strong> Comments (<%= @post.comments.size %>):</strong>
     <div class="container">
       <%= form_for([@post, @comment]) do |f| %>
-      <%= f.text_area :body %> Comment <br>
-      <%= f.text_field :author_name %> Name <br>
-      <%= f.text_field :author_email %> Email address <br>
-      <%= f.submit %>
+      Name: <%= f.text_field :author_name %><br>
+      Email address: <%= f.text_field :author_email %><br>
+      Comment: <%= f.text_area :body %><br>
+      <%= f.submit class: "button round secondary small" %>
       <% end %>
 
       <% @post.comments.each do |comment| %>
-      <p><%= comment.body %> Comments by :
-         <%= comment.author_name %> Email :
-         <%= comment.author_email %></p>
-        <% end %>
-      </p>
+      <p> Comments by: <%= comment.author_name %> 
+       Email: <%= comment.author_email %>
+       <%= comment.body %>
+     </p>
+     <% end %>
+   </p>
+ </div>
 
-      <%= link_to 'Home', posts_path %>
-    </div>
-
-    <footer>
-      <div class="container">
-       <p>&copy; a D2 joint 2015</p>
-     </div>
-   </footer>
+ 

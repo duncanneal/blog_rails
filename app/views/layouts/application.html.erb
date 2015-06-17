@@ -28,9 +28,8 @@
         <a class="navbar-brand" href="<%= root_path %>">Drink!</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
-        <% unless current_user %> 
+        <% if current_user %> 
         
-        <% else %>
         <form action="<%= destroy_user_session_path %>" method="POST" class="navbar-form navbar-right">
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
           <input name="_method" type="hidden" value="delete" />
@@ -46,7 +45,11 @@
   <%= yield %>
 
   
+<footer>
+  <div class="container">
+   <p>&copy; a D2 joint 2015</p>
+ </div>
+</footer>
 
-
-
-
+  </body>
+</html>

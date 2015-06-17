@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  mount_uploader :postimg, PostimgUploader
+  mount_uploader :pic, PicUploader
   has_many :comments, dependent: :destroy
   has_many :taggings
   has_many :tags, :through => :taggings

@@ -3,16 +3,13 @@ Rails.application.routes.draw do
     :registrations => "registrations"
       }
 
-  resources :posts, :only => [:create, :show, :edit] do
-    resources :comments, :only => [:create, :edit, :destroy]
+  resources :posts do
+    resources :comments, :only => [:create, :destroy]
   end
   resource :session, :only => [:create, :destroy]
   
   #get 'comments/index'
-
-  get 'posts/index'
-  get 'blog/:id' => 'home#show', as: :blog
-  post '/users' => 'users#create'
+ 
   root 'home#index'
 
   
