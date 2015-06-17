@@ -1,40 +1,49 @@
 
 <div class="row">
-    <div class="large-12 column">
-<p>
-  <strong>Author:</strong>
-  <%= @post.author %>
-</p>
+  <div class="large-12 column">
+    <h1 class="title">
+      <%= @post.title %> 
+    </h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+    <p class="date">
+      Submitted <%= time_ago_in_words(@post.created_at) %> Ago        
+    </p>
 
-<p>
-  <strong>Tag:</strong>
-  <%= @post.all_tags %>
-</p>
+    <p class="body">
+      <%= @post.body %>
+    </p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
+    <p class="all_tags">
+      # <%= @post.all_tags %>
+    </p>
 
-<%= link_to 'Edit', edit_post_path, class: "button round secondary small"  %> 
-<%= link_to 'Back', posts_path, class: "button round secondary small" %>
-<h4>Comment</h4>
-<div class="container">
-  <% @post.comments.each do |comment| %>
-      <%= comment.author_name %>
-      <%= comment.author_email %>
-      <%= comment.body %>
-  <% end %>
-</div>
+    <p class="pic">
+      <%= image_tag(@post.pic.url) %>
+    </p>
 
-
-<footer>
+    <%= link_to 'Edit', edit_post_path(post), class: "button round secondary small"  %> 
+    
+    <strong> Comments (<%= @post.comments.size %>):</strong>
     <div class="container">
-       <p>&copy; a D2 joint 2015</p>
+      <%= form_for([@post, @comment]) do |f| %>
+      <%= f.text_area :body %> Comment <br>
+      <%= f.text_field :author_name %> Name <br>
+      <%= f.text_field :author_email %> Email address <br>
+      <%= f.submit %>
+      <% end %>
+
+      <% @post.comments.each do |comment| %>
+      <p><%= comment.body %> Comments by :
+         <%= comment.author_name %> Email :
+         <%= comment.author_email %></p>
+        <% end %>
+      </p>
+
+      <%= link_to 'Home', posts_path %>
     </div>
-</footer>
+
+    <footer>
+      <div class="container">
+       <p>&copy; a D2 joint 2015</p>
+     </div>
+   </footer>

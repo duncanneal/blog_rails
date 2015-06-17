@@ -17,6 +17,7 @@ gem 'fog'
 gem 'devise'
 gem 'mandrill-api'
 gem 'puma'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug'

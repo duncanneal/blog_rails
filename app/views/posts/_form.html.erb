@@ -1,38 +1,25 @@
-<%= form_for(@post) do |f| %>
+<%= form_for @post do |f| %>
   <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
+    <div id="errors">
+      <h2><%= pluralize(@post.errors.count, "error") %> prevented this post from saving:</h2>
       <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
-
-  <div class="field">
-     <%= f.label :date %><br>
-     <%= f.date_select :date, start_year: 1980 %>
-   </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_field :body %>
-  </div>
-  <div class="field">
-    <%= f.label :author_name %><br>
-    <%= f.text_field :author %>
-  </div>
-  <div class="field">
-    <%= f.label :tag %><br>
-    <%= f.text_field :all_tags %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
+  <%= f.label :title %><br>
+  <%= f.text_field :title %><br>
+  <br>
+  <%= f.label :body %><br>
+  <%= f.text_field :body %><br>
+  <br>
+  <%= f.label :tag %><br>
+  <%= f.text_field :all_tags %><br>
+  <br>
+  <%= f.label :pic %><br>
+  <%= f.file_field :pic %><br>
+  <%= f.submit %>
 <% end %>
