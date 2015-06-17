@@ -18,6 +18,8 @@ gem 'devise'
 gem 'mandrill-api'
 gem 'puma'
 gem 'mini_magick'
+gem 'omniauth-github', '~> 1.1.2'
+
 
 group :development, :test do
   gem 'byebug'
