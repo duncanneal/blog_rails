@@ -19,6 +19,7 @@ gem 'mandrill-api'
 gem 'puma'
 gem 'mini_magick'
 gem 'omniauth-github', '~> 1.1.2'
+gem 'kaminari'
 
 
 group :development, :test do

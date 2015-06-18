@@ -23,6 +23,7 @@
 
     <% if user_signed_in? %>
     <%= link_to 'Edit', edit_post_path, class: "button round secondary small"  %> 
+    <%= link_to 'Posts', posts_path, class: "button round secondary small" %>
     <% end %>
 
     <strong> Comments (<%= @post.comments.size %>):</strong>
