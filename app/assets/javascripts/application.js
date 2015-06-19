@@ -15,6 +15,28 @@
 //= require turbolinks
 //= require_tree .
 //= require foundation
-$(document).foundation();
 
-$(function(){ $(document).foundation(); });
+$(function(){
+
+  $(document).foundation();
+
+  $('#new_comment').submit(function(event){
+    event.preventDefault();
+
+    // Do the ajax request
+    $.ajax({
+      url: event.target.action + '.json',
+      method: 'POST',
+      data: $(event.target).serialize(),
+      success: function(data) {
+        $('#comment_list').append(data.comment);
+        $("#comment_list .comment:last").hide().slideDown(); //animation
+      }, 
+    
+      error: function(e) {
+        console.log("Woops!", e);
+      }
+    });
+      
+  });
+});

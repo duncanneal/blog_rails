@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   before_filter :configure_permitted_parameters, :only => [:create, :update]
-
+  respond_to :json
   protected
 
   def configure_permitted_parameters

@@ -15,10 +15,14 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
 
-    if @comment.save
-      redirect_to @comment.post
-    else
-      redirect_to :back
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to @post }
+        format.json { render json: { comment: render_to_string(@comment, formats: 'html') }}
+      else
+        format.html { redirect_to :back }
+        format.json { render json: { error: "NOPE" } } # TODO actually do error here.
+      end
     end
   end
 

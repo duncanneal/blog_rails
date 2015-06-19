@@ -1,0 +1,12 @@
+<ul>
+  <li class="comment">
+    <h4><%= comment.title %></h4>
+    <p><%= comment.body %></p>
+    <% unless comment.author_name.blank? %>
+    <%commentuser = comment.author_name  %>
+    <% else %>
+    <%commentuser = "user"  %>
+    <% end %>
+    <p>created by: <%= commentuser%> at <%= comment.created_at.strftime("%B %e %Y %I:%M%p") %></p>
+  </li>
+</ul>
