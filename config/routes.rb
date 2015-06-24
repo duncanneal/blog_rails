@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     :registrations => "registrations",
     :omniauth_callbacks => "callbacks"
   } 
-  
+
+  resources :charges, :only => [:new, :create]
+
   resources :posts do
     resources :comments, :only => [:create, :destroy]
   end
